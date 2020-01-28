@@ -10,7 +10,10 @@
 </head>
 <body>
     <?php 
+        session_start();
         include "connection.php";
+        if(empty($_SESSION["username"]))
+        {
     ?>
 
     <div class="signin">
@@ -36,6 +39,11 @@
 
             
     </div>
+    <?php
+        }else {
+            header("location:home.php");
+        }
+    ?>
 
 </body>
 </html>

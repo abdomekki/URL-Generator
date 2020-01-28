@@ -1,3 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="css/handreg.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+    
+
 <?php
     session_start();
     include "connection.php";
@@ -38,18 +51,44 @@
     } // end class
 
 
+    function test_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+      }
 
+      //call code
+      $newRand = new random("6");
+      $newRand->randomString;
+      
+      //call URL
+      $longurl=$_GET["longUrl"];
+      $id=$_SESSION["id"];
 
     
-
-
-    //call code
-    $newRand = new random("6");
-    $newRand->randomString;
-    
-    //call URL
-    $longurl=$_GET["longUrl"];
-    $id=$_SESSION["id"];
+    if (empty($longurl)) {
+        $website = "";
+      } else {
+        $website = test_input($longurl);
+        // check if URL address syntax is valid
+        if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)) {
+          
+          ?>
+                    <div class="cong">
+                        <form>
+                            <h2 style="color: white">Invalid URL !!!</h2>
+                            <a href="Home.php" style="text-decoration: none">Go back to Home page</a>
+                            <br><br>
+                        </form>
+        
+                    </div>
+                <?php
+                header("refresh:2;url=home.php");
+          
+        }else {
+           
+           
     
 
     $query1="select longUrl from urls";
@@ -141,8 +180,22 @@
 
 
 
+            
+
+
+        }    
+      }
+
+    
+
+
+   
 
 
     
 
     ?>
+
+
+</body>
+</html>

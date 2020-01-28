@@ -9,7 +9,12 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <?php 
+        session_start();
+        include "connection.php";
+        if(empty($_SESSION["username"]))
+        {
+    ?>
     <div class="signup">
         <form action="handreg.php" method="post">
         <h2 style="color: #fff;">Sign Up</h2>
@@ -25,7 +30,11 @@
 
         </form>
     </div>
-
+    <?php
+        }else {
+            header("location:home.php");
+        }
+    ?>
 
     <script src="js/signup.js">
 </body>

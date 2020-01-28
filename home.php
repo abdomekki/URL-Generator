@@ -26,9 +26,9 @@
     ?>
     <div class="form-group">
         <form action="handgen.php" method="get">
-            <input type="text"  name="longUrl" placeholder="Enter URL Here..."  class="form-control" required>
+            <input type="text" id="generate" name="longUrl" placeholder="Enter URL Here..."  class="form-control" required>
             <br>    
-            <input type="submit" name="generate" value="Generate" class="btn btn-outline-primary btn-lg mb-2">
+            <input type="submit" name="generate" value="Generate" id="btn" class="btn btn-outline-primary btn-lg mb-2">
         </form>
         
 
@@ -36,6 +36,8 @@
     
 
     <?php
+        
+
         
         $id=$_SESSION["id"];
         $sql = "SELECT * FROM urls where user_id='$id'";

@@ -16,6 +16,9 @@
         $email=$_POST["email"];
         $pass=$_POST["pass"];
 
+        
+        
+
         $sql="INSERT INTO `users`( `email`, `pass`) VALUES ('$email','$pass')";
         $query="SELECT * FROM users";
 
